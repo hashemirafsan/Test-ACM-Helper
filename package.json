@@ -1,0 +1,22 @@
+{
+  "name": "extension",
+  "version": "1.0.0",
+  "description": "Codeforce extension",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "extension",
+    "codeforce"
+  ],
+  "author": "Hashemi Rafsan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "mongodb": "^2.2.12",
+    "node-fetch": "^1.6.3",
+    "url-parse": "^1.1.7"
+  }
+}
