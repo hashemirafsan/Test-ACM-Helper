@@ -24,24 +24,43 @@ app.get('/database',(req,res) => {
         var name = [item.name].join(" ");
         return name;
       }
-      var Arr = pase.map(getName);
-      for (var a in Arr){
-        if(Arr[a] == na){
-          res.send('Found');
-          console.log('Found');
-        } else{
-          res.send('Not Found');
-          console.log('Not Found');
+       res.setHeader('Content-Type', 'text/html');
+        var Arr = pase.map(getName);
+        for (var a in Arr){
+          if(Arr[a] == na){
+            res.write('Found'+'<br>');
+            console.log('Found');
+          } else{
+            res.write('Not Found'+'<br>');
+
+            console.log('Not Found');
+          }
         }
-      }
-
-
+        for (var a in Arr){
+          var wir = Arr[a];
+          res.write(wir+'<br>');
+        }
+        res.end();
       }else{
         console.log("Not Found");
       }
     });
   db.close()
   });
+});
+
+app.get('/codeforce',(req,res,next)=>{
+  var url = 'http://codeforces.com/api/user.info?handles=Ahmed_maruf';
+  fetch(url)
+      .then((res) => {
+          return res.json();
+      }).then((json) => {
+
+        var result = JSON.stringify(json);
+        var result = JSON.parse(result);
+        res.write(result);
+      });
+next();
 });
 
 app.listen(process.env.PORT || 3000,  () => {
