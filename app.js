@@ -53,9 +53,10 @@ app.get('/codeforce',(req,res)=>{
     if (!error && response.statusCode === 200) {
       res.setHeader('Content-Type', 'text/html');
       var js = JSON.parse(body);
+      console.log(js);
       var ex =js.result;
       function getName(item,index){
-        var name = [item.country].join(" ");
+        var name = [item.firstName,item.lastName].join(" ");
         return name;
       }
       var arr = ex.map(getName);
