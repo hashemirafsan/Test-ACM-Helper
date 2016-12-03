@@ -17,6 +17,7 @@
     "express-session": "^1.14.2",
     "mongodb": "^2.2.12",
     "node-fetch": "^1.6.3",
+    "request": "^2.79.0",
     "url-parse": "^1.1.7"
   }
 }

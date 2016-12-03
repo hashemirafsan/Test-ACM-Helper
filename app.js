@@ -3,6 +3,7 @@ var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 const fetch = require('node-fetch');
 const express = require('express');
+const request = require('request');
 var app = express();
 
 var na = "rafsan jani";
@@ -17,15 +18,12 @@ app.get('/database',(req,res) => {
         console.log(err);
       }else if(result.length){
 
-      dex = JSON.stringify(result);
-      pase = JSON.parse(dex);
-
       function getName(item,index){
         var name = [item.name].join(" ");
         return name;
       }
        res.setHeader('Content-Type', 'text/html');
-        var Arr = pase.map(getName);
+        var Arr = result.map(getName);
         for (var a in Arr){
           if(Arr[a] == na){
             res.write('Found'+'<br>');
@@ -49,19 +47,28 @@ app.get('/database',(req,res) => {
   });
 });
 
-app.get('/codeforce',(req,res,next)=>{
-  var url = 'http://codeforces.com/api/user.info?handles=Ahmed_maruf';
-  fetch(url)
-      .then((res) => {
-          return res.json();
-      }).then((json) => {
+app.get('/codeforce',(req,res)=>{
+  var url1 = 'http://codeforces.com/api/user.info?handles=Ahmed_maruf';
+  request(url1, (error, response, body)=> {
+    if (!error && response.statusCode === 200) {
+      res.setHeader('Content-Type', 'text/html');
+      var js = JSON.parse(body);
+      var ex =js.result;
+      function getName(item,index){
+        var name = [item.country].join(" ");
+        return name;
+      }
+      var arr = ex.map(getName);
+      for(var k in arr){
+          res.write(arr[k]);
+      }
+      res.end();
+    } else {
 
-        var result = JSON.stringify(json);
-        var result = JSON.parse(result);
-        res.write(result);
-      });
-next();
+    }
+  });
 });
+
 
 app.listen(process.env.PORT || 3000,  () => {
   console.log('app start');
