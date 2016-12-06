@@ -61,7 +61,7 @@ app.get('/profile',(req,res)=>{
       }
       var arr = ex.map(getName);
       for(var k in arr){
-          res.write(arr[k]);
+          res.write("<a href='#'>" +arr[k]+"</a>");
       }
       res.end();
     } else {
