@@ -1,0 +1,30 @@
+{
+  "name": "extension",
+  "version": "1.0.0",
+  "description": "Codeforce extension",
+  "main": "index.js",
+  "engines": {
+    "node": "6.9.1"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "extension",
+    "codeforce"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashemirafsan/ACM_helper/"
+  },
+  "author": "Hashemi Rafsan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "mongodb": "^2.2.12",
+    "node-fetch": "^1.6.3",
+    "request": "^2.79.0",
+    "url-parse": "^1.1.7"
+  }
+}
