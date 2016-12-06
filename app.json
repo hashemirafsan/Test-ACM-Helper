@@ -1,18 +1,8 @@
 {
-  "name": "ACM_helper",
-  "description": "ACM contastent can get some help from here",
-  "scripts": {
-    "postdeploy": "bin/setup",
-    "pr-predestroy": "bin/teardown"
-  },
-  "env": {
-  },
-  "formation": {
-  },
-  "addons": [
-
-  ],
-  "buildpacks": [
-
-  ]
+  "name": "Start on Heroku: Node.js",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/heroku/node-js-getting-started",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
 }
