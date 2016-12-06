@@ -47,7 +47,7 @@ app.get('/database',(req,res) => {
   });
 });
 
-app.get('/codeforce',(req,res)=>{
+app.get('/profile',(req,res)=>{
   var url1 = 'http://codeforces.com/api/user.info?handles=Ahmed_maruf';
   request(url1, (error, response, body)=> {
     if (!error && response.statusCode === 200) {
@@ -70,15 +70,26 @@ app.get('/codeforce',(req,res)=>{
   });
 });
 
+app.get('/contest', (req,res) => {
+  var contestUrl = ' http://codeforces.com/api/contest.list';
+  request(contestUrl , (err,response,body) => {
+    if(!err && response.statusCode === 200){
+      var data = JSON.parse(body);
+      res.send(data);
+    }
+  });
+});
+
+app.get('/problem' , (req,res) => {
+  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
+  request(problemUrl , (err,response,body) => {
+    if(!err && response.statusCode === 200){
+      var data = JSON.parse(body);
+      res.send(data);
+    }
+  });
+});
 
 app.listen(process.env.PORT || 3000,  () => {
   console.log('app start');
 });
-/*
-fetch(url)
-    .then((res) => {
-        return res.json();
-    }).then((json) => {
-        console.log(json);
-    });
-*/

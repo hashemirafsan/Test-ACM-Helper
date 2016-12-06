@@ -1,8 +1,6 @@
-const fetch = require('node-fetch');
-var url = 'http://codeforces.com/api/user.info?handles=Ahmed_maruf';
-fetch(url)
-    .then((res) => {
-        return res.json();
-    }).then((json) => {
-        console.log(json);
-    });
+var arr = [1,2,3,4,5];
+
+function getReminder(){
+  return 1%2==0;
+}
+console.log(getReminder());
