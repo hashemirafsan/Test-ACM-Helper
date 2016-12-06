@@ -6,6 +6,15 @@ const express = require('express');
 const request = require('request');
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+
+app.set('views', __dirname + '/views');
+app.set('view engine' , 'ejs');
+
+app.get('/',(req,res) => {
+  req.render('pages/index');
+});
+
 var na = "rafsan jani";
 var url = 'mongodb://localhost:27017/user_table'
 app.get('/database',(req,res) => {
