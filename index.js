@@ -12,7 +12,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
 
 app.get('/',(req,res) => {
-  req.render('pages/index');
+  res.render('pages/index');
 });
 
 var na = "rafsan jani";
