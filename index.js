@@ -12,7 +12,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
 
 app.get('/',(req,res) => {
-  res.render('pages/index');
+  res.render('pages/index',{title : 'Solve Tracker'});
 });
 
 var na = "rafsan jani";
