@@ -1,0 +1,18 @@
+{
+  "name": "ACM_helper",
+  "description": "ACM contastent can get some help from here",
+  "scripts": {
+    "postdeploy": "bin/setup",
+    "pr-predestroy": "bin/teardown"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
