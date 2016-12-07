@@ -84,7 +84,8 @@ app.get('/contest', (req,res) => {
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
-      res.send(data);
+      var result = data.result;
+      res.render('pages/contest',result);
     }
   });
 });
