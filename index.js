@@ -85,16 +85,17 @@ app.get('/contest', (req,res) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
       var result = data.result;
-      var drinks = [
-        { name: 'Bloody Mary', drunkness: 3 },
-        { name: 'Martini', drunkness: 5 },
-        { name: 'Scotch', drunkness: 10 }
-    ];
-        res.render('pages/contest', {
-          drinks: drinks,
-          tagline: tagline
-      });
     }
+  });
+
+  var drinks = [
+    { name: 'Bloody Mary', drunkness: 3 },
+    { name: 'Martini', drunkness: 5 },
+    { name: 'Scotch', drunkness: 10 }
+];
+    res.render('pages/contest', {
+      drinks: drinks,
+      tagline: tagline
   });
 });
 
