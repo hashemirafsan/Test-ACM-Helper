@@ -85,12 +85,7 @@ app.get('/contest', (req,res) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
       var result = data.result;
-      function ID(item,index){
-        var id = [item.id].join(" ");
-        return id;
-      }
-      var resl = result.map(ID);
-      res.render('pages/contest',resl);
+      res.render('pages/contest',result);
     }
   });
 });
