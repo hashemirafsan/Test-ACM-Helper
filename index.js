@@ -93,7 +93,11 @@ app.get('/contest', (req,res) => {
     { name: 'Martini', drunkness: 5 },
     { name: 'Scotch', drunkness: 10 }
 ];
-    res.render('pages/contest', drinks);
+var tagline = "hello";
+    res.render('pages/contest', {
+      drinks: drinks,
+      tagline: tagline
+  });
 });
 
 app.get('/problem' , (req,res) => {
