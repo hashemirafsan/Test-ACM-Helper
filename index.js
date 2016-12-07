@@ -90,7 +90,10 @@ app.get('/contest', (req,res) => {
         { name: 'Martini', drunkness: 5 },
         { name: 'Scotch', drunkness: 10 }
     ];
-      res.render('pages/contest',drinks);
+        res.render('pages/contest', {
+          drinks: drinks,
+          tagline: tagline
+      });
     }
   });
 });
