@@ -1,1 +1,7 @@
-<li><%= result %></li>
+<table>
+  <% for(var i = 0; i < JSON.stringify(result).length; i++) { %>
+    <tr>
+      <td><%= result[i].id %></td>
+    </tr>
+  <% } %>
+</table>
