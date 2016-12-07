@@ -86,7 +86,7 @@ app.get('/contest', (req,res) => {
       var data = JSON.parse(body);
       var result = data.result;
       res.render('pages/contest', {
-        drinks: result
+        results: result
     });
     }
   });

@@ -1,6 +1,8 @@
 <h2>Loop</h2>
 <ul>
-    <% drinks.forEach(function(drink) { %>
-        <li><%= drink.id %> - <%= drink.name %></li>
+    <% results.forEach(function(data) { %>
+      <% if(data.phase == 'BEFORE'){ %>
+          <li><%= data.id %> - <%= data.name %></li>
+       <% } %>
     <% }); %>
 </ul>
