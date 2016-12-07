@@ -2,7 +2,7 @@
 <ul>
     <% results.forEach(function(data) { %>
       <% if(data.phase == 'BEFORE'){ %>
-          <li><%= data.id %> - <%= data.name %></li>
+          <a href="http://codeforces.com/contests/<%= data.id %>"><%= data.name %></a>
        <% } %>
     <% }); %>
 </ul>
