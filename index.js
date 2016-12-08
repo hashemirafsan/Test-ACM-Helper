@@ -79,7 +79,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(encodeURI('/contest'), (req,res) => {
+app.get(encodeURIComponent('/contest'), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
