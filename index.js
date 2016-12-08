@@ -92,21 +92,22 @@ app.get('/contest', (req,res) => {
     });
     }
   });
-
-
-
 });
 
-app.get('/categories/:tags' , (req,res) => {
-  if(_.isEmpty(req.params.tags) == true){
-    res.render('pages/index');
-  }
-  /*
-  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
+app.get('/categoriess' , (req,res) => {
+    res.render('pages/categories');
+});
+
+app.get('/categoriess/:tags' , (req,res) => {
+  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags='+req.params.tags;
   request(problemUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
-      res.send(data);
+      var result = data.result;
+      res.render('pages/problems',{
+        results : result,
+        tag: req.params.tags
+      });
     }
   });
   */
