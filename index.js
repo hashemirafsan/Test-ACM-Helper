@@ -4,6 +4,7 @@ var MongoClient = require('mongodb').MongoClient
 const fetch = require('node-fetch');
 const express = require('express');
 const request = require('request');
+const fixedURL = require('htmlspecialchars');
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -79,13 +80,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-function fixedEncodeURIComponent (str) {
-  return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-    return '%' + c.charCodeAt(0).toString(16);
-  });
-}
-
-app.get(fixedEncodeURIComponent('/contest'), (req,res) => {
+app.get(fixedURL('/contest'), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
