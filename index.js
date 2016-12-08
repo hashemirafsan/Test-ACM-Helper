@@ -93,14 +93,13 @@ app.get('/contest', (req,res) => {
     }
   });
 });
-/*
+
 app.get('/categories' , (req,res) => {
     res.render('pages/categories');
 });
-*/
 
-app.get('/problems', (req,res) => {
-  var problemsUrl = 'http://codeforces.com/api/problemset.problems';
+app.get('/problems/:tags', (req,res) => {
+  var problemsUrl = 'http://codeforces.com/api/problemset.problems?tags='+req.params.tags;
   request(problemsUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var problemData = JSON.parse(body);
