@@ -104,7 +104,7 @@ app.get('/problems', (req,res) => {
   request(problemsUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var problemData = JSON.parse(body);
-      var problemDataresult = problemData.result;
+      var problemDataresult = problemData.result.problems;
       res.render('pages/problems', {
         problemDataresults : problemDataresult
     });
