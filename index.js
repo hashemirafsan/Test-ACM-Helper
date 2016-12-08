@@ -99,15 +99,15 @@ app.get('/categories' , (req,res) => {
 });
 */
 
-app.get('/categories' , (req,res) => {
-  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
-  request(problemUrl , (err,response,body) => {
+app.get('/problems', (req,res) => {
+  var contestUrl = 'http://codeforces.com/api/problemset.problems';
+  request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
       var result = data.result;
-      res.render('pages/problems',{
-        results : result
-      });
+      res.render('pages/problems', {
+        results: result
+    });
     }
   });
 });
