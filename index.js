@@ -57,9 +57,6 @@ app.get('/database',(req,res) => {
   });
 });
 
-function FixedUrl(str){
-    return encodedURIComponent(str);
-}
 
 app.get('/profile',(req,res)=>{
   var url1 = 'http://codeforces.com/api/user.info?handles=PutulPoly';
@@ -84,7 +81,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(FixedUrl('/contest'), (req,res) => {
+app.get(encodedURIComponent('/contest'), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
