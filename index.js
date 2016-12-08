@@ -9,7 +9,6 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-
 app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
 
@@ -58,6 +57,10 @@ app.get('/database',(req,res) => {
   });
 });
 
+function FixedUrl(str){
+    return encodedURIComponent(str);
+}
+
 app.get('/profile',(req,res)=>{
   var url1 = 'http://codeforces.com/api/user.info?handles=PutulPoly';
   request(url1, (error, response, body)=> {
@@ -81,7 +84,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get('/contest', (req,res) => {
+app.get(FixedUrl('/contest'), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
