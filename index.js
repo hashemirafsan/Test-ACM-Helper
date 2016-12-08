@@ -99,7 +99,7 @@ app.get('/categories' , (req,res) => {
 });
 
 app.get('/categories/:tags' , (req,res) => {
-  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags='+req.params.tags;
+  var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
   request(problemUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
       var data = JSON.parse(body);
