@@ -79,7 +79,13 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(encodeURIComponent('/contest'), (req,res) => {
+function fixedEncodeURIComponent (str) {
+  return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+    return '%' + c.charCodeAt(0).toString(16);
+  });
+}
+
+app.get(fixedEncodeURIComponent('/contest'), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
