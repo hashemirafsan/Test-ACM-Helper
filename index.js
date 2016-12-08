@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient
 const fetch = require('node-fetch');
 const express = require('express');
 const request = require('request');
-const fixedURL = require('htmlspecialchars');
+const _ = require('lodash');
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -98,9 +98,10 @@ app.get('/contest', (req,res) => {
 });
 
 app.get('/categories/:tags' , (req,res) => {
-  if(req.params.tags == 'NULL'){
+  if(_.isEmpty(req.params.tags) == true){
     res.render('pages/index');
-  }/*
+  }
+  /*
   var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
   request(problemUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
