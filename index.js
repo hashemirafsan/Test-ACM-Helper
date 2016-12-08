@@ -105,7 +105,8 @@ app.get('/problems/:tags', (req,res) => {
       var problemData = JSON.parse(body);
       var problemDataresult = problemData.result.problems;
       res.render('pages/problems', {
-        problemDataresults : problemDataresult
+        problemDataresults : problemDataresult,
+        tags : req.params.tags
     });
     }
   });
