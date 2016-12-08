@@ -97,7 +97,10 @@ app.get('/contest', (req,res) => {
 
 });
 
-app.get('/problem' , (req,res) => {
+app.get('/categories/:tags' , (req,res) => {
+  if(req.params.tags == 'NULL'){
+    res.render('pages/index');
+  }/*
   var problemUrl = 'http://codeforces.com/api/problemset.problems?tags=implementation';
   request(problemUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
@@ -105,6 +108,7 @@ app.get('/problem' , (req,res) => {
       res.send(data);
     }
   });
+  */
 });
 
 app.listen(process.env.PORT || 3000,  () => {
