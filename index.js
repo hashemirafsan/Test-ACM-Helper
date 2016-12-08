@@ -100,13 +100,13 @@ app.get('/categories' , (req,res) => {
 */
 
 app.get('/problems', (req,res) => {
-  var contestUrl = 'http://codeforces.com/api/problemset.problems';
-  request(contestUrl , (err,response,body) => {
+  var problemsUrl = 'http://codeforces.com/api/problemset.problems';
+  request(problemsUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
-      var data = JSON.parse(body);
-      var result = data.result;
+      var problemData = JSON.parse(body);
+      var problemDataresult = problemData.result;
       res.render('pages/problems', {
-        results: result
+        problemDataresults : problemDataresult
     });
     }
   });
