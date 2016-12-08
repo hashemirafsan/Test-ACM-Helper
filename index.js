@@ -94,11 +94,11 @@ app.get('/contest', (req,res) => {
   });
 });
 
-app.get('/categoriess' , (req,res) => {
+app.get('/categories' , (req,res) => {
     res.render('pages/categories');
 });
 
-app.get('/categoriess/:tags' , (req,res) => {
+app.get('/categories/:tags' , (req,res) => {
   var problemUrl = 'http://codeforces.com/api/problemset.problems?tags='+req.params.tags;
   request(problemUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
@@ -110,7 +110,6 @@ app.get('/categoriess/:tags' , (req,res) => {
       });
     }
   });
-  */
 });
 
 app.listen(process.env.PORT || 3000,  () => {
