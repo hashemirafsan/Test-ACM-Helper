@@ -80,7 +80,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(fixedURL('/contest'), (req,res) => {
+app.get(fixedURL("/contest"), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
