@@ -81,7 +81,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(/^(contest)\/(.+)/, (req,res) => {
+app.get('/contest([a-z])', (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
