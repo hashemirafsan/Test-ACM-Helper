@@ -105,8 +105,7 @@ app.get('/categories/:tags' , (req,res) => {
       var data = JSON.parse(body);
       var result = data.result;
       res.render('pages/problems',{
-        results : result,
-        tag: req.params.tags
+        results : result
       });
     }
   });
