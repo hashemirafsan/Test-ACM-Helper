@@ -10,15 +10,26 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
+
 var app = express();
 
-app.use(helmet());
+//uses things here
+app.use(helmet()); //initial helmet here
+app.use(helmet.noCache()); //nocache
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"]
+  }
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
+//set things here
 app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
 
+
+//get things here
 app.get('/',(req,res) => {
   res.render('pages/index',{title : 'Solve Tracker'});
 });
@@ -119,11 +130,13 @@ app.get('/problems/:tags', (req,res) => {
   });
 });
 
-//body-parser
-
 app.get('/test',(req,res) => {
   res.render('pages/test');
 });
+
+
+//post things here
+
 
 app.post('/test',(req,res) => {
   res.render('pages/test1',{
