@@ -23,11 +23,10 @@ app.use(helmet.contentSecurityPolicy({
 }));
 app.use(helmet.hsts({
   maxAge: 5184000,
-  includeSubDomains: false,
-  preload: true
 }));
+var ninetyDaysInSeconds = 7776000;
 app.use(helmet.hpkp({
-  maxAge: 7776000,
+  maxAge: ninetyDaysInSeconds,
   sha256s: ['AbCdEf123=', 'ZyXwVu456=']
 }));
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
