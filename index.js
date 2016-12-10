@@ -143,7 +143,7 @@ app.post('/submit',(req,res) => {
   HackerRank.submit({
   apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
   source: '<?php $a = $b + $c; echo $a; ?>',
-  language: req.body.language,
+  language: 7,
   testcases: ["9"],
   wait: true,
   callbackUrl: 'http://solvetracker.herokuapp.com/test',
