@@ -21,6 +21,16 @@ app.use(helmet.contentSecurityPolicy({
     defaultSrc: ["'self'"]
   }
 }));
+app.use(helmet.hsts({
+  maxAge: 5184000,
+  includeSubDomains: false,
+  preload: true
+}));
+app.use(helmet.hpkp({
+  maxAge: 7776000,
+  sha256s: ['AbCdEf123=', 'ZyXwVu456=']
+}));
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
