@@ -21,14 +21,6 @@ app.use(helmet.contentSecurityPolicy({
     defaultSrc: ["'self'"]
   }
 }));
-app.use(helmet.hsts({
-  maxAge: 5184000,
-}));
-var ninetyDaysInSeconds = 7776000;
-app.use(helmet.hpkp({
-  maxAge: ninetyDaysInSeconds,
-  sha256s: ['AbCdEf123=', 'ZyXwVu456=']
-}));
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
