@@ -154,8 +154,10 @@ app.get('/submit',(req,res) => {
     throw err;
   },
   // OK.
-  success: function (){
-    res.render('pages/categories');
+  success: function (response){
+    response = JSON.parse(response);
+    res.send(response);
+
   },
   });
 });
