@@ -156,9 +156,7 @@ app.get('/submit',(req,res) => {
   // OK.
   success: function (response){
     HackerRankResults = JSON.parse(response).result;
-    res.render('pages/test1',{
-      results : HackerRankResults
-    });
+    res.send(HackerRankResults);
   },
   });
 });
