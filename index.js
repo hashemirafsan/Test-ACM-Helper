@@ -123,7 +123,9 @@ app.get('/test',(req,res) => {
 
 app.post('/test',(req,res) => {
   res.render('pages/test1',{
-    message: req.body.name
+    name: req.body.name,
+    email:req.body.email,
+    message:req.body.message
   });
 });
 
