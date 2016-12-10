@@ -156,8 +156,9 @@ app.post('/submit',(req,res) => {
   // OK.
   success: function (response){
     response = JSON.parse(response).result;
-    res.send(response);
-
+    res.render('pages/test1' , {
+      responses : response
+    });
   },
   });
 });
