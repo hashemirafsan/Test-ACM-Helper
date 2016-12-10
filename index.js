@@ -1,4 +1,6 @@
 
+'use strict'
+
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 const fetch = require('node-fetch');
@@ -6,9 +8,11 @@ const express = require('express');
 const request = require('request');
 const _ = require('lodash');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
+
 var app = express();
 
-
+app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
