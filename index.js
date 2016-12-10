@@ -142,9 +142,9 @@ app.get('/submit',(req,res) => {
   // Submit the source code for compilation
   HackerRank.submit({
   apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
-  source: 'using System;class MyClass{static void Main(string[] args) {System.Console.WriteLine("Hello World!\\n");}}',
-  language: 9,
-  testcases: [],
+  source: '<?php $a = $b+$c; echo $a; ?>',
+  language: 7,
+  testcases: ["9","8"],
   wait: true,
   callbackUrl: 'http://solvetracker.herokuapp.com/test',
   format: 'json',
@@ -155,7 +155,7 @@ app.get('/submit',(req,res) => {
   },
   // OK.
   success: function (response){
-    response = JSON.parse(response);
+    response = JSON.parse(response).result;
     res.send(response);
 
   },
