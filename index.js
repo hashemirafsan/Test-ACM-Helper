@@ -9,6 +9,7 @@ const request = require('request');
 const _ = require('lodash');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const HackerRank = require('machinepack-hackerrank');
 
 
 var app = express();
@@ -136,14 +137,26 @@ app.get('/test',(req,res) => {
 });
 
 
-//post things here
 
-
-app.post('/test',(req,res) => {
-  res.render('pages/test1',{
-    name: req.body.name,
-    email:req.body.email,
-    message:req.body.message
+app.get('/submit',(req,res) => {
+  // Submit the source code for compilation
+  HackerRank.submit({
+  apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
+  source: 'using System;class MyClass{static void Main(string[] args) {System.Console.WriteLine("Hello World!\\n");}}',
+  language: 9,
+  testcases: [],
+  wait: true,
+  callbackUrl: 'http://solvetracker.herokuapp.com/test',
+  format: 'json',
+  }).exec({
+  // An unexpected error occurred.
+  error: function (err){
+    throw err;
+  },
+  // OK.
+  success: function (){
+    res.render('pages/categories');
+  },
   });
 });
 

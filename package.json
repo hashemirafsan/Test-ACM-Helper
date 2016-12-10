@@ -27,6 +27,7 @@
     "helmet": "^3.1.0",
     "htmlspecialchars": "^1.0.5",
     "lodash": "^4.17.2",
+    "machinepack-hackerrank": "^0.1.2",
     "mongodb": "^2.2.12",
     "node-fetch": "^1.6.3",
     "request": "^2.79.0",
