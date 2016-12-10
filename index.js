@@ -138,13 +138,13 @@ app.get('/test',(req,res) => {
 
 
 
-app.get('/submit',(req,res) => {
+app.post('/submit',(req,res) => {
   // Submit the source code for compilation
   HackerRank.submit({
   apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
-  source: '<?php $a = $b+$c echo $a ?>',
-  language: 7,
-  testcases: ["9","8","-11"],
+  source: req.body.source,
+  language: req.body.language,
+  testcases: ["9"],
   wait: true,
   callbackUrl: 'http://solvetracker.herokuapp.com/test',
   format: 'json',
@@ -155,9 +155,10 @@ app.get('/submit',(req,res) => {
   },
   // OK.
   success: function (response){
-    response = JSON.parse(response).result;
-    res.send(response);
-
+    HackerRankResults = JSON.parse(response).result;
+    res.render('pages/test1',{
+      results : HackerRankResults
+    });
   },
   });
 });

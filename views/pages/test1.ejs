@@ -1,3 +1,6 @@
-<h1>Your name is <%= name %> </h1><br>
-<h1>Your name is <%= email %> </h1><br>
-<h1>Your name is <%= message %> </h1>
+<ul>
+  <% results.forEach(function(data) { %>
+      <p> <%= data.compilemessage %> </p><br>
+      <p> <%= data.message %> </p>
+  <% }); %>
+</ul>
