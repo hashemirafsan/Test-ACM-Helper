@@ -1,4 +1,6 @@
 <ul>
-      <p> <%= results.compilemessage %> </p><br>
-      <p> <%= results.message %> </p>
+  <% results.forEach(function(data) { %>
+      <p> <%= data.compilemessage %> </p><br>
+      <p> <%= data.message %> </p>
+  <% }); %>
 </ul>

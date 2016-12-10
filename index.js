@@ -142,8 +142,8 @@ app.get('/submit',(req,res) => {
   // Submit the source code for compilation
   HackerRank.submit({
   apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
-  source: '<?php $a = $b+$c echo $a ?>',
-  language: 7,
+  source: JSON.stringify(req.body.source),
+  language: req.body.language,
   testcases: ["9","8","-11"],
   wait: true,
   callbackUrl: 'http://solvetracker.herokuapp.com/test',
