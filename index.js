@@ -121,7 +121,7 @@ app.get('/problems/:tags', (req,res) => {
 
 //body-parser
 
-app.get(urlencode('/test'),(req,res) => {
+app.get('/test',(req,res) => {
   res.render('pages/test');
 });
 
