@@ -121,7 +121,7 @@ app.get('/problems/:tags', (req,res) => {
 
 //body-parser
 
-app.get('/test',(req,res) => {
+app.get(urlencode('/test'),(req,res) => {
   res.render('pages/test');
 });
 
@@ -133,6 +133,12 @@ app.post('/test',(req,res) => {
   });
 });
 
+
+
+
+//disable part
+
+app.disable('x-powered-by');
 
 app.listen(process.env.PORT || 3000,  () => {
   console.log('app start');
