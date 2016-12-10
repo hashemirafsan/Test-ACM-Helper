@@ -138,7 +138,7 @@ app.get('/test',(req,res) => {
 
 
 
-app.post('/submit',(req,res) => {
+app.get('/submit',(req,res) => {
   // Submit the source code for compilation
   HackerRank.submit({
   apiKey: 'hackerrank|1319254-1122|20ebcf8f9202144537435867e6f43edc2781d56e',
