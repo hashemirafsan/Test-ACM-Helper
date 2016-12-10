@@ -5,8 +5,11 @@ const fetch = require('node-fetch');
 const express = require('express');
 const request = require('request');
 const _ = require('lodash');
+const bodyParser = require('body-parser');
 var app = express();
 
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 app.set('views', __dirname + '/views');
@@ -111,6 +114,19 @@ app.get('/problems/:tags', (req,res) => {
     }
   });
 });
+
+//body-parser
+
+app.get('/test',(req,res) => {
+  res.render('pages/test');
+});
+
+app.post('/test',(req,res) => {
+  res.render('pages/test1',{
+    message: req.body.name
+  });
+});
+
 
 app.listen(process.env.PORT || 3000,  () => {
   console.log('app start');
