@@ -39,12 +39,13 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-app.use(StringUrl("/abcd"),(req,res) => {
-  next();
-});
+
 //set things here
 app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
+app.set(app.get(StringUrl(str),(req,res) =>{
+  next();
+}));
 
 
 //get things here
@@ -119,7 +120,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get(StringUrl("/contest"), (req,res) => {
+app.get("/contest", (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
