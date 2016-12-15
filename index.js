@@ -118,7 +118,7 @@ app.get('/profile',(req,res)=>{
 
 app.get((function(){
   let con = "/contest";
-  return 'meta-' + StringUrl(con);
+  return con;
 })(), function (req,res) {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
