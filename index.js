@@ -36,6 +36,21 @@ app.get('/',(req,res) => {
   res.render('pages/index',{title : 'Solve Tracker'});
 });
 
+function StringUrl(str){
+  var mx = [];
+  var SlashRemove = str.replace("/"," ").trim();
+  var s = SlashRemove.split(' ').length;
+  for(var i = 1; i <= SlashRemove.split(' ').length ; i++){
+    var VerifyStringFirst = SlashRemove.replace(/(\w+)\s(\w+)/gi,'$'+i);
+    var VerifyStringSecond = VerifyStringFirst.replace(/[`@()!'~$*^%"#:;.,{}_|]/gi,"");
+    mx.push(VerifyStringSecond);
+  }
+  var ConvertStringFi = mx.toString();
+  var ConvertStringSc = ConvertStringFi.replace(/[,]/,"/");
+  var ConvertStringTh = "/"+ConvertStringSc;
+  return ConvertStringTh;
+}
+
 var na = "rafsan jani";
 var url = 'mongodb://localhost:27017/user_table'
 app.get('/database',(req,res) => {
@@ -101,7 +116,10 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get('/contest', (req,res) => {
+app.get((function(){
+  let con = "/contest";
+  StringUrl(con);
+})(), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
