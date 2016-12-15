@@ -118,8 +118,8 @@ app.get('/profile',(req,res)=>{
 
 app.get((function(){
   let con = "/contest";
-  StringUrl(con);
-})(), (req,res) => {
+  return 'meta-' + StringUrl(con);
+})(), function (req,res) {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
