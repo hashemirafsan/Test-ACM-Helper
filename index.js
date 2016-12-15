@@ -14,7 +14,6 @@ const HackerRank = require('machinepack-hackerrank');
 function StringUrl(str){
   var mx = [];
   var SlashRemove = str.replace("/"," ").trim();
-  var s = SlashRemove.split(' ').length;
   for(var i = 1; i <= SlashRemove.split(' ').length ; i++){
     var VerifyStringFirst = SlashRemove.replace(/(\w+)\s(\w+)/gi,'$'+i);
     var VerifyStringSecond = VerifyStringFirst.replace(/[`@()!'~$*^%"#:;.,{}_|]/gi,"");
@@ -39,13 +38,13 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-
+app.use(express.get(StringUrl(str),(req,res) =>{
+  next();
+}));
 //set things here
 app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
-app.set(app.get(StringUrl(str),(req,res) =>{
-  next();
-}));
+
 
 
 //get things here
@@ -120,7 +119,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get("/contest", (req,res) => {
+app.get(StringUrl("/contest"), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
