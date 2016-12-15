@@ -11,31 +11,6 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const HackerRank = require('machinepack-hackerrank');
 
-
-var app = express();
-
-//uses things here
-app.use(helmet()); //initial helmet here
-app.use(helmet.noCache()); //nocache
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"]
-  }
-}));
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
-
-//set things here
-app.set('views', __dirname + '/views');
-app.set('view engine' , 'ejs');
-
-
-//get things here
-app.get('/',(req,res) => {
-  res.render('pages/index',{title : 'Solve Tracker'});
-});
-
 function StringUrl(str){
   var mx = [];
   var SlashRemove = str.replace("/"," ").trim();
@@ -50,6 +25,34 @@ function StringUrl(str){
   var ConvertStringTh = "/"+ConvertStringSc;
   return ConvertStringTh;
 }
+
+var app = express();
+
+//uses things here
+app.use(helmet()); //initial helmet here
+app.use(helmet.noCache()); //nocache
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"]
+  }
+}));
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+app.use(StringUrl("/abcd"),(req,res) => {
+  next();
+});
+//set things here
+app.set('views', __dirname + '/views');
+app.set('view engine' , 'ejs');
+
+
+//get things here
+app.get('/',(req,res) => {
+  res.render('pages/index',{title : 'Solve Tracker'});
+});
+
+
 
 var na = "rafsan jani";
 var url = 'mongodb://localhost:27017/user_table'
@@ -116,7 +119,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get('/contest', (req,res) => {
+app.get(StringUrl("/contest"), (req,res) => {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
@@ -129,7 +132,7 @@ app.get('/contest', (req,res) => {
   });
 });
 
-app.route(StringUrl("/categories")).get((req,res) => {
+app.get(StringUrl("/categories"),(req,res) => {
     res.render('pages/categories');
 });
 
