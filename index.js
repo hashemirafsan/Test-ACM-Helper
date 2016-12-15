@@ -38,7 +38,7 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-app.use(express.get(StringUrl('/'),(req,res) =>{
+app.use(express.get(StringUrl(str),(req,res) =>{
   next();
 }));
 //set things here
