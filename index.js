@@ -116,10 +116,7 @@ app.get('/profile',(req,res)=>{
   });
 });
 
-app.get((function(){
-  let con = "/contest";
-  return String(StringUrl(con));
-})(), function (req,res) {
+app.get("/contest(^['])", function (req,res) {
   var contestUrl = ' http://codeforces.com/api/contest.list';
   request(contestUrl , (err,response,body) => {
     if(!err && response.statusCode === 200){
