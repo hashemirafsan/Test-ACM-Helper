@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const HackerRank = require('machinepack-hackerrank');
 
+
 function StringUrl(str){
   var mx = [];
   var SlashRemove = str.replace("/"," ").trim();
@@ -22,7 +23,7 @@ function StringUrl(str){
   var ConvertStringFi = mx.toString();
   var ConvertStringSc = ConvertStringFi.replace(/[,]/,"/");
   var ConvertStringTh = "/"+ConvertStringSc;
-  return ConvertStringTh;
+  return 'meta-'+ConvertStringTh;
 }
 
 var app = express();
@@ -38,9 +39,7 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-app.use(express.get(StringUrl(str),(req,res) =>{
-  next();
-}));
+
 //set things here
 app.set('views', __dirname + '/views');
 app.set('view engine' , 'ejs');
@@ -132,7 +131,10 @@ app.get(StringUrl("/contest"), (req,res) => {
   });
 });
 
-app.get(StringUrl("/categories"),(req,res) => {
+app.get((function(){
+  let path = "categories";
+  StringUrl(path);
+})(),(req,res) => {
     res.render('pages/categories');
 });
 
