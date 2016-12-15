@@ -129,7 +129,7 @@ app.get('/contest', (req,res) => {
   });
 });
 
-app.get(StringUrl("/categories") , (req,res) => {
+app.use(StringUrl("/categories") , (req,res) => {
     res.render('pages/categories');
 });
 
